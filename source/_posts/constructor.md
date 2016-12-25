@@ -5,10 +5,8 @@ categories: 专业技能
 tags:
   - 面向对象
 ---
-#专业技能 #构造函数
 ## 构造函数
-简介：构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式
-
+简介：本文介绍了构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式
 <!-- more -->
 ### 术语
 * Constructor：构造函数
@@ -19,6 +17,7 @@ tags:
 * prototype属性
 * constructor属性
 * 类
+* 总结
 * 自测题目
 
 ### 构造函数:Constructor
@@ -40,7 +39,7 @@ p.say()
 
 ### prototype属性：Constructor.prototype
 **每个构造函数都有一个prototype属性**，其值为一个对象（以后称prototype所指的对象为**原型对象**）
-> 原型对象的用途，是储存其所有实例**共享**的属性和方法。《JavaScript高级程序设计》P147
+> 原型对象的用途，是储存其所有实例**共享**的属性和方法。《JavaScript高级程序设计》P147  
 
 ```javascript
 function Person() {}
@@ -57,8 +56,8 @@ p.say()
 * 使用方式：在构造函数的原型对象上定义。如上所示，为`Person.prototype`定义`age`属性和`say`方法，即可使所有实例都拥有对应的共有属性和方法
 
 ### constructor属性：Constructor.prototype.constructor
-> 所有原型对象都会自动获得一个constructor属性，指向prototype属性所在的构造函数。《JavaScript高级程序设计》P148
-  
+> 所有原型对象都会自动获得一个constructor属性，指向prototype属性所在的构造函数。《JavaScript高级程序设计》P148  
+
 ```javascript
 function Person() {}
 Person.age = 18
@@ -91,11 +90,18 @@ const p = new Person()
 ```
 其中加了`static`关键字的方法，相当于构造函数的静态方法，`constructor`相当于构造函数的函数体，而非`constructor`的其余方法，则相当于构造函数的原型方法
 
+### 总结
+1. Constructor的函数体是定义实例的**实例属性和方法**的
+2. Constructor.prototype是定义实例的**共享属性和方法**的
+3. Constructor上是定义构造器的**静态属性和方法**的
+4. 类知识构造函数的语法糖
+
 ### 自测题目
-声明一个构造函数Student，使得该构造函数产生的实例
-1. 有**私有**的`name`属性和`study`方法
-2. 有**共有**的`school`属性和`say`方法
-3. 有静态属性`defaultProps`和用于校验是否`Student`实例的`isStudent`方法
+1. 声明一个构造函数Student，使得该构造函数产生的实例
+    1. 有**私有**的`name`属性和`study`方法
+    2. 有**共有**的`school`属性和`say`方法
+    3. 有静态属性`defaultProps`和用于校验是否`Student`实例的`isStudent`方法
+2. 使用类完成上述功能
 
 #### 答案
 ```javascript
