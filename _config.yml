@@ -68,6 +68,6 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-type: git
-repo: git@github.com:JoeZheng2015/JoeZheng2015.github.io.git
-branch: gh-pages
+  type: git
+  repo: git@github.com:JoeZheng2015/JoeZheng2015.github.io.git
+  branch: gh-pages
