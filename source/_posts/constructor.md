@@ -5,7 +5,7 @@ categories: 专业技能
 tags:
   - 面向对象
 ---
-## 构造函数
+
 简介：本文介绍了构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式
 <!-- more -->
 ### 术语
