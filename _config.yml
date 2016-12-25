@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Joe
 subtitle:
-description:
-author: John Doe
-language:
+description: 用你喜欢的方式度过一生
+author: Joe
+language: zh-Hans
 timezone:
 
 # URL
@@ -68,4 +68,6 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+type: git
+repo: git@github.com:JoeZheng2015/JoeZheng2015.github.io.git
+branch: gh-pages
