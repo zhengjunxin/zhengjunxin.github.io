@@ -8,17 +8,19 @@ tags:
 
 简介：本文介绍了构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式
 <!-- more -->
-### 术语
-* Constructor：构造函数
-* instance：实例
 
 ### 目录
+* 术语
 * 构造函数
 * prototype属性
 * constructor属性
 * 类
 * 总结
 * 自测题目
+
+### 术语
+* Constructor：构造函数
+* instance：实例
 
 ### 构造函数:Constructor
 JavaScript中用`new`关键字调用的就是构造函数
