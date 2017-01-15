@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="面向对象," />
+  <meta name="keywords" content="性能优化," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="简介：本文介绍了构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式">
+<meta name="description" content="简介：Passive event listeners 是新增的特性，指在 addEventListener 时传入{passive: true} 参数，表明不会在回调中执行 preventDefault()从而消除由 touch 和 wheel 事件带来的滚动阻塞，提高页面的滚动性能。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="构造函数">
-<meta property="og:url" content="http://yoursite.com/2016/12/25/constructor/index.html">
+<meta property="og:title" content="高性能滚动（一）：Passive event listeners">
+<meta property="og:url" content="http://yoursite.com/2017/01/15/passive-event-listeners/index.html">
 <meta property="og:site_name" content="Joe">
-<meta property="og:description" content="简介：本文介绍了构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式">
-<meta property="og:updated_time" content="2017-01-15T07:56:15.000Z">
+<meta property="og:description" content="简介：Passive event listeners 是新增的特性，指在 addEventListener 时传入{passive: true} 参数，表明不会在回调中执行 preventDefault()从而消除由 touch 和 wheel 事件带来的滚动阻塞，提高页面的滚动性能。">
+<meta property="og:updated_time" content="2017-01-15T08:28:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="构造函数">
-<meta name="twitter:description" content="简介：本文介绍了构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式">
+<meta name="twitter:title" content="高性能滚动（一）：Passive event listeners">
+<meta name="twitter:description" content="简介：Passive event listeners 是新增的特性，指在 addEventListener 时传入{passive: true} 参数，表明不会在回调中执行 preventDefault()从而消除由 touch 和 wheel 事件带来的滚动阻塞，提高页面的滚动性能。">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/25/constructor/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/15/passive-event-listeners/"/>
 
 
 
 
 
-  <title> 构造函数 | Joe </title>
+  <title> 高性能滚动（一）：Passive event listeners | Joe </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/25/constructor/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/15/passive-event-listeners/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Joe">
@@ -297,7 +297,7 @@
             
             
               
-                构造函数
+                高性能滚动（一）：Passive event listeners
               
             
           </h1>
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-25T20:45:43+08:00">
-                2016-12-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-15T16:26:43+08:00">
+                2017-01-15
               </time>
             
 
@@ -353,8 +353,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/25/constructor/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/25/constructor/" itemprop="commentCount"></span>
+                <a href="/2017/01/15/passive-event-listeners/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/15/passive-event-listeners/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -364,7 +364,7 @@
 
           
           
-             <span id="/2016/12/25/constructor/" class="leancloud_visitors" data-flag-title="构造函数">
+             <span id="/2017/01/15/passive-event-listeners/" class="leancloud_visitors" data-flag-title="高性能滚动（一）：Passive event listeners">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -391,63 +391,22 @@
       
 
       
-        <p>简介：本文介绍了构造函数，构造函数的prototype属性，构造函数的prototype.constructor属性的应用场景和使用方式。在ES6新增的类的对应使用方式<br><a id="more"></a></p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ul>
-<li>术语</li>
-<li>构造函数</li>
-<li>prototype属性</li>
-<li>constructor属性</li>
-<li>类</li>
-<li>总结</li>
-<li>自测题目</li>
+        <p>简介：Passive event listeners 是新增的特性，指在 addEventListener 时传入{passive: true} 参数，表明不会在回调中执行 preventDefault()从而消除由 touch 和 wheel 事件带来的滚动阻塞，提高页面的滚动性能。</p>
+<a id="more"></a>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>问题原因</li>
+<li>使用</li>
+<li>特性检测</li>
 </ul>
-<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><ul>
-<li>Constructor：构造函数</li>
-<li>instance：实例</li>
-</ul>
-<h3 id="构造函数-Constructor"><a href="#构造函数-Constructor" class="headerlink" title="构造函数:Constructor"></a>构造函数:Constructor</h3><p>JavaScript中用<code>new</code>关键字调用的就是构造函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.age = age</div><div class="line">    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 实例能访问this.age，this就是实例自己</span></div><div class="line">          <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> Person(<span class="number">18</span>)</div><div class="line">p.say()</div></pre></td></tr></table></figure></p>
-<ul>
-<li>原理：使用<code>new</code>调用构造函数时，其函数体定义的<code>this</code>会默认返回作为实例</li>
-<li>应用场景：定义<strong>私有</strong>属性和方法</li>
-<li>使用方式：在构造函数的函数体内的<code>this</code>定义。如上所示，为<code>this</code>定义<code>age</code>属性和<code>say</code>方法，即可使其实例拥有对应的私有属性和方法</li>
-</ul>
-<h3 id="prototype属性：Constructor-prototype"><a href="#prototype属性：Constructor-prototype" class="headerlink" title="prototype属性：Constructor.prototype"></a>prototype属性：Constructor.prototype</h3><p><strong>每个构造函数都有一个prototype属性</strong>，其值为一个对象（以后称prototype所指的对象为<strong>原型对象</strong>）</p>
+<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>所有的现代浏览器都有个线程专门用于滚动，保证页面滚动的流畅。但是因为 touchstart, touchmove 和 wheel （注意不包括 scroll 事件，因为 scroll 事件是在页面<strong>已经</strong>滚动时才触发的）这 3 个事件可以通过调用 preventDefault() 阻止滚动行为。所以如果为滚动元素注册了以上的事件，则浏览器<strong>必须</strong>等待回调函数执行完毕才能滚动，这无疑影响了滚动性能。而且即使是一个 <a href="http://rbyers.github.io/janky-touch-scroll.html" target="_blank" rel="external">空的回调函数</a>也会影响滚动性能。</p>
+<p>根据Google统计</p>
 <blockquote>
-<p>原型对象的用途，是储存其所有实例<strong>共享</strong>的属性和方法。《JavaScript高级程序设计》P147  </p>
+<p>For instance, in Chrome for Android 80% of the touch events that block scrolling never actually prevent it. 10% of these events add more than 100ms of delay to the start of scrolling, and a catastrophic delay of at least 500ms occurs in 1% of scrolls.  </p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">Person.prototype.age = <span class="number">18</span></div><div class="line">Person.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 实例能访问this.age，是因为age是实例的原型属性，在其原型链上</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span>`</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> Person()</div><div class="line">p.say()</div></pre></td></tr></table></figure>
-<ul>
-<li>原理：实例继承构造函数的原型对象，所以能通过原型链访问</li>
-<li>应用场景：定义<strong>共享</strong>属性和方法</li>
-<li>使用方式：在构造函数的原型对象上定义。如上所示，为<code>Person.prototype</code>定义<code>age</code>属性和<code>say</code>方法，即可使所有实例都拥有对应的共有属性和方法</li>
-</ul>
-<h3 id="constructor属性：Constructor-prototype-constructor"><a href="#constructor属性：Constructor-prototype-constructor" class="headerlink" title="constructor属性：Constructor.prototype.constructor"></a>constructor属性：Constructor.prototype.constructor</h3><blockquote>
-<p>所有原型对象都会自动获得一个constructor属性，指向prototype属性所在的构造函数。《JavaScript高级程序设计》P148  </p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">Person.age = <span class="number">18</span></div><div class="line">Person.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 注意，此时还能用this，访问this.age</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`My age is <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span>`</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> Person()</div><div class="line">p.constructor.say()</div></pre></td></tr></table></figure>
-<ul>
-<li>原理：构造函数也是对象，能定义自己的属性和方法（称为静态属性和方法）</li>
-<li>应用场景：定义默认属性，如React的defaultProps。和<strong>校验方法</strong>如<code>Array.isArray</code></li>
-<li>使用方式：直接在构造函数这个对象上定义。如上所示<code>Person.name</code>，然后调用时通过<code>p.constuctor.say</code>。因为<strong>实例是继承构造函数的原型对象，而不是继承构造函数</strong></li>
-</ul>
-<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>ES6新增了class关键字，允许我们定义类。但其实class只是<strong>构造函数的语法糖</strong>而已<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="comment">// 等价于Person.staticSay = function()&#123;&#125;</span></div><div class="line">    <span class="keyword">static</span> staticSay() &#123;&#125;</div><div class="line">    <span class="keyword">constructor</span>(age) &#123;</div><div class="line">        <span class="keyword">this</span>.age = age</div><div class="line">        <span class="comment">// 等价于this.instanceSay = function()&#123;&#125;</span></div><div class="line">        <span class="keyword">this</span>.instanceSay = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 等价于Person.prototype.prototypeSay = function()&#123;&#125;</span></div><div class="line">    prototypeSay() &#123;&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> Person()</div></pre></td></tr></table></figure></p>
-<p>其中加了<code>static</code>关键字的方法，相当于构造函数的静态方法，<code>constructor</code>相当于构造函数的函数体，而非<code>constructor</code>的其余方法，则相当于构造函数的原型方法</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>Constructor的函数体是定义实例的<strong>实例属性和方法</strong>的</li>
-<li>Constructor.prototype是定义实例的<strong>共享属性和方法</strong>的</li>
-<li>Constructor上是定义构造器的<strong>静态属性和方法</strong>的</li>
-<li>类知识构造函数的语法糖</li>
-</ol>
-<h3 id="自测题目"><a href="#自测题目" class="headerlink" title="自测题目"></a>自测题目</h3><ol>
-<li>声明一个构造函数Student，使得该构造函数产生的实例<ol>
-<li>有<strong>私有</strong>的<code>name</code>属性和<code>study</code>方法</li>
-<li>有<strong>共有</strong>的<code>school</code>属性和<code>say</code>方法</li>
-<li>有静态属性<code>defaultProps</code>和用于校验是否<code>Student</code>实例的<code>isStudent</code>方法</li>
-</ol>
-</li>
-<li>使用类完成上述功能</li>
-</ol>
-<h4 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name</div><div class="line">    <span class="keyword">this</span>.study = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'unique study method'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Student.prototype.shcool = <span class="string">'MIT'</span></div><div class="line">Student.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'common say method'</span>)</div><div class="line">&#125;</div><div class="line">Student.defaultProps = <span class="string">'student'</span></div><div class="line">Student.isStudent = <span class="function"><span class="keyword">function</span>(<span class="params">instance</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> instance <span class="keyword">instanceof</span> Student</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> joe = <span class="keyword">new</span> Student(<span class="string">'joe'</span>)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(joe.name) <span class="comment">// joe</span></div><div class="line">joe.study() <span class="comment">// unique study method</span></div><div class="line"><span class="built_in">console</span>.log(joe.shcool) <span class="comment">// MIT</span></div><div class="line">joe.say() <span class="comment">// common say method</span></div><div class="line"><span class="built_in">console</span>.log(Student.isStudent(joe)) <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>所以 Passive event listeners 就是提供给我们一个方法，在用 addEventListener 注册 touchstart, touchmove 和 wheel 监听器时，承诺我们不会调用 preventDefault(), 让浏览器不需等待回调执行，马上开始滚动。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// passive touchstart event</div><div class="line">target.addEventListener(&apos;touchstart&apos;, listener, &#123;passive: true&#125;)</div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="external">MDN addEventListener</a>也已经更新了该语法</p>
+<h2 id="特性检测"><a href="#特性检测" class="headerlink" title="特性检测"></a>特性检测</h2><p>由于旧版本的浏览器 addEventListener 的第三个参数是接受一个布尔值的，如果传对象进去，只会被解析为 true，所以在注册时需要检测是否支持该特性，可以通过 <a href="https://github.com/rafrex/detect-passive-events" target="_blank" rel="external">detect-passive-events</a> 库检测</p>
 
       
     </div>
@@ -471,7 +430,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/面向对象/" rel="tag"># 面向对象</a>
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
           
         </div>
       
@@ -480,15 +439,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/01/15/npm-module/" rel="next" title="npm模块开发问题总结">
+                <i class="fa fa-chevron-left"></i> npm模块开发问题总结
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/31/prototype-inheritance/" rel="prev" title="原型继承">
-                原型继承 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -514,8 +473,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/25/constructor/"
-           data-title="构造函数" data-url="http://yoursite.com/2016/12/25/constructor/">
+      <div class="ds-thread" data-thread-key="2017/01/15/passive-event-listeners/"
+           data-title="高性能滚动（一）：Passive event listeners" data-url="http://yoursite.com/2017/01/15/passive-event-listeners/">
       </div>
     
   </div>
@@ -615,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#术语"><span class="nav-number">2.</span> <span class="nav-text">术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数-Constructor"><span class="nav-number">3.</span> <span class="nav-text">构造函数:Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype属性：Constructor-prototype"><span class="nav-number">4.</span> <span class="nav-text">prototype属性：Constructor.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor属性：Constructor-prototype-constructor"><span class="nav-number">5.</span> <span class="nav-text">constructor属性：Constructor.prototype.constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-number">6.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自测题目"><span class="nav-number">8.</span> <span class="nav-text">自测题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#答案"><span class="nav-number">8.1.</span> <span class="nav-text">答案</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题原因"><span class="nav-number">2.</span> <span class="nav-text">问题原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性检测"><span class="nav-number">4.</span> <span class="nav-text">特性检测</span></a></li></ol></div>
             
 
           </div>

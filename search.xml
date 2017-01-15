@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[高性能滚动（一）：Passive event listeners]]></title>
+      <url>%2F2017%2F01%2F15%2Fpassive-event-listeners%2F</url>
+      <content type="text"><![CDATA[简介：Passive event listeners 是新增的特性，指在 addEventListener 时传入{passive: true} 参数，表明不会在回调中执行 preventDefault()从而消除由 touch 和 wheel 事件带来的滚动阻塞，提高页面的滚动性能。 目录 问题原因 使用 特性检测 问题原因所有的现代浏览器都有个线程专门用于滚动，保证页面滚动的流畅。但是因为 touchstart, touchmove 和 wheel （注意不包括 scroll 事件，因为 scroll 事件是在页面已经滚动时才触发的）这 3 个事件可以通过调用 preventDefault() 阻止滚动行为。所以如果为滚动元素注册了以上的事件，则浏览器必须等待回调函数执行完毕才能滚动，这无疑影响了滚动性能。而且即使是一个 空的回调函数也会影响滚动性能。 根据Google统计 For instance, in Chrome for Android 80% of the touch events that block scrolling never actually prevent it. 10% of these events add more than 100ms of delay to the start of scrolling, and a catastrophic delay of at least 500ms occurs in 1% of scrolls. 所以 Passive event listeners 就是提供给我们一个方法，在用 addEventListener 注册 touchstart, touchmove 和 wheel 监听器时，承诺我们不会调用 preventDefault(), 让浏览器不需等待回调执行，马上开始滚动。 使用12// passive touchstart eventtarget.addEventListener(&apos;touchstart&apos;, listener, &#123;passive: true&#125;) MDN addEventListener也已经更新了该语法 特性检测由于旧版本的浏览器 addEventListener 的第三个参数是接受一个布尔值的，如果传对象进去，只会被解析为 true，所以在注册时需要检测是否支持该特性，可以通过 detect-passive-events 库检测]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[npm模块开发问题总结]]></title>
       <url>%2F2017%2F01%2F15%2Fnpm-module%2F</url>
       <content type="text"><![CDATA[简介：总结在开发 npm 模块过程遇到的一些问题 目录 LICENSE 导出模块 命名冲突 LICENSE在初始化 npm 时需要指定开源协议，当时还各种找模板，其实在 github 创建新的仓库时就可以指定生成了，也有 简单的介绍 导出模块在导出 npm 模块时，一开始我很天真的使用 ES6 的语法（还没被实现的语法，我怎么想的，真是笑死我了）1export default myFunction 再了解到 Webpack 同时支持 CommonJS 和 AMD 方案后，决定使用 AMD 方案。结果 create-react-app 又不支持 AMD 所以最后使用了 UMD 的 returnExports 兼 Node, AMD 和 browser globals 3 种使用方式，顺便整理了 JS 模块的规范： AMDRequireJS使用的方案12345678// define暴露define(function() &#123; // 返回想要暴露的对象 return objectYourWantToExport&#125;)// require引入require([module], callback) CommonJSNodeJS使用的方案12345// exports暴露module.exports = jquery// require引入var $ = require('jquery') UMDUMD github 通用模块规范用于适配各种场景 命名冲突 在发布 npm 模块时出现 permission 错误，还以为是哪一步错了，结果是包的命名冲突了，更改 package.json 中的 name 即可]]></content>
