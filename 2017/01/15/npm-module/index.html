@@ -90,13 +90,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/15/npm-module/index.html">
 <meta property="og:site_name" content="Joe">
 <meta property="og:description" content="简介：总结在开发 npm 模块过程遇到的一些问题">
-<meta property="og:image" content="http://yoursite.com/npm模块开发问题总结/npm%20license.jpg">
-<meta property="og:image" content="http://yoursite.com/npm模块开发问题总结/permission.jpg">
-<meta property="og:updated_time" content="2017-01-15T07:57:37.000Z">
+<meta property="og:image" content="http://yoursite.com/images/license.jpg">
+<meta property="og:image" content="http://yoursite.com/images/permission.jpg">
+<meta property="og:updated_time" content="2017-01-15T08:20:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm模块开发问题总结">
 <meta name="twitter:description" content="简介：总结在开发 npm 模块过程遇到的一些问题">
-<meta name="twitter:image" content="http://yoursite.com/npm模块开发问题总结/npm%20license.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/license.jpg">
 
 
 
@@ -401,13 +401,14 @@
 <li>命名冲突</li>
 </ul>
 <h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a>LICENSE</h2><p>在初始化 npm 时需要指定开源协议，当时还各种找模板，其实在 github 创建新的仓库时就可以指定生成了，也有 简单的<a href="http://choosealicense.com/" target="_blank" rel="external">介绍</a></p>
-<p><img src="npm模块开发问题总结/npm%20license.jpg" alt=""></p>
+<img src="/images/license.jpg">
 <h2 id="导出模块"><a href="#导出模块" class="headerlink" title="导出模块"></a>导出模块</h2><p>在导出 npm 模块时，一开始我很天真的使用 ES6 的语法（还没被实现的语法，我怎么想的，真是笑死我了）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> myFunction</div></pre></td></tr></table></figure></p>
 <p>再了解到 Webpack 同时支持 CommonJS 和 AMD 方案后，决定使用 AMD 方案。结果 <a href="https://github.com/facebookincubator/create-react-app" target="_blank" rel="external">create-react-app</a> 又不支持 AMD 所以最后使用了 <a href="https://github.com/umdjs/umd" target="_blank" rel="external">UMD</a> 的 <a href="https://github.com/umdjs/umd/blob/master/templates/returnExports.js" target="_blank" rel="external">returnExports</a> 兼 Node, AMD 和 browser globals 3 种使用方式，顺便整理了 JS 模块的规范：</p>
 <h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p>RequireJS使用的方案<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// define暴露</span></div><div class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 返回想要暴露的对象</span></div><div class="line">    <span class="keyword">return</span> objectYourWantToExport</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// require引入</span></div><div class="line"><span class="built_in">require</span>([<span class="built_in">module</span>], callback)</div></pre></td></tr></table></figure></p>
 <h3 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h3><p>NodeJS使用的方案<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// exports暴露</span></div><div class="line"><span class="built_in">module</span>.exports = jquery</div><div class="line"></div><div class="line"><span class="comment">// require引入</span></div><div class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="UMD通用模块规范"><a href="#UMD通用模块规范" class="headerlink" title="UMD通用模块规范"></a>UMD通用模块规范</h3><p><a href="https://github.com/umdjs/umd" target="_blank" rel="external">UMD github</a></p>
-<h2 id="命名冲突"><a href="#命名冲突" class="headerlink" title="命名冲突"></a>命名冲突</h2><p>在发布 npm 模块时出现错误，还以为是哪一步错了，结果时包的命名冲突了，更改 package.json 中的 name 即可<br><img src="npm模块开发问题总结/permission.jpg" alt=""></p>
+<h3 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h3><p><a href="https://github.com/umdjs/umd" target="_blank" rel="external">UMD github</a> 通用模块规范用于适配各种场景</p>
+<h2 id="命名冲突"><a href="#命名冲突" class="headerlink" title="命名冲突"></a>命名冲突</h2><img src="/images/permission.jpg">
+<p>在发布 npm 模块时出现 permission 错误，还以为是哪一步错了，结果是包的命名冲突了，更改 package.json 中的 name 即可</p>
 
       
     </div>
@@ -443,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/15/npm模块开发问题总结/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -520,7 +517,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -573,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LICENSE"><span class="nav-number">2.</span> <span class="nav-text">LICENSE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出模块"><span class="nav-number">3.</span> <span class="nav-text">导出模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD"><span class="nav-number">3.1.</span> <span class="nav-text">AMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonJS"><span class="nav-number">3.2.</span> <span class="nav-text">CommonJS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UMD通用模块规范"><span class="nav-number">3.3.</span> <span class="nav-text">UMD通用模块规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名冲突"><span class="nav-number">4.</span> <span class="nav-text">命名冲突</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LICENSE"><span class="nav-number">2.</span> <span class="nav-text">LICENSE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出模块"><span class="nav-number">3.</span> <span class="nav-text">导出模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD"><span class="nav-number">3.1.</span> <span class="nav-text">AMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonJS"><span class="nav-number">3.2.</span> <span class="nav-text">CommonJS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UMD"><span class="nav-number">3.3.</span> <span class="nav-text">UMD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名冲突"><span class="nav-number">4.</span> <span class="nav-text">命名冲突</span></a></li></ol></div>
             
 
           </div>
