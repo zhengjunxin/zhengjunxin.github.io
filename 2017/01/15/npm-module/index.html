@@ -92,7 +92,7 @@
 <meta property="og:description" content="简介：总结在开发 npm 模块过程遇到的一些问题">
 <meta property="og:image" content="http://yoursite.com/images/license.jpg">
 <meta property="og:image" content="http://yoursite.com/images/permission.jpg">
-<meta property="og:updated_time" content="2017-01-15T08:25:17.000Z">
+<meta property="og:updated_time" content="2017-02-07T02:53:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm模块开发问题总结">
 <meta name="twitter:description" content="简介：总结在开发 npm 模块过程遇到的一些问题">
@@ -408,7 +408,7 @@
 <h3 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h3><p>NodeJS使用的方案<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// exports暴露</span></div><div class="line"><span class="built_in">module</span>.exports = jquery</div><div class="line"></div><div class="line"><span class="comment">// require引入</span></div><div class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>)</div></pre></td></tr></table></figure></p>
 <h3 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h3><p><a href="https://github.com/umdjs/umd" target="_blank" rel="external">UMD github</a> 通用模块规范用于适配各种场景</p>
 <h2 id="命名冲突"><a href="#命名冲突" class="headerlink" title="命名冲突"></a>命名冲突</h2><img src="/images/permission.jpg">
-<p>在发布 npm 模块时出现 permission 错误，还以为是哪一步错了，结果是包的命名冲突了，更改 package.json 中的 name 即可</p>
+<p>使用 npm publish 可以发布模块，但在发布 npm 模块时出现 permission 错误，还以为是哪一步错了，结果是包的命名冲突了，更改 package.json 中的 name 即可</p>
 
       
     </div>
