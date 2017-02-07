@@ -54,4 +54,4 @@ var $ = require('jquery')
 ## 命名冲突
 {% img /images/permission.jpg %}
 
-在发布 npm 模块时出现 permission 错误，还以为是哪一步错了，结果是包的命名冲突了，更改 package.json 中的 name 即可
+使用 npm publish 可以发布模块，但在发布 npm 模块时出现 permission 错误，还以为是哪一步错了，结果是包的命名冲突了，更改 package.json 中的 name 即可
