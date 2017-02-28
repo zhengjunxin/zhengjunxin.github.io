@@ -518,21 +518,14 @@
 
       
         
-          
-            <h2 id="P1-HTML"><a href="#P1-HTML" class="headerlink" title="P1 HTML"></a>P1 HTML</h2><ul>
-<li>学习了 <code>&lt;em&gt;</code> 与 <code>&lt;i&gt;</code> 的区别：视觉上都是斜体，但 <code>&lt;em&gt;</code> 表示强调， <code>&lt;i&gt;</code> 是从斜体，从文档中区分出来</li>
-<li><code>&lt;strong&gt;</code> 和 <code>&lt;b&gt;</code> 的区别：视觉上都是粗体，但 <code>&lt;strong&gt;</code> 表示重要，<code>&lt;b&gt;</code> 则是以粗体从文档中区分出来</li>
-<li><code>&lt;mark&gt;</code> 表示搜索结果高亮</li>
-<li>用 <code>&lt;del&gt;</code> 表示删除的语义， <code>&lt;strike&gt;</code> 也可以但 HTML 5 不推荐</li>
-<li><code>&lt;sup&gt;</code> 和 <code>&lt;sub&gt;</code> 表示上下标</li>
-<li>总结：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">逃避可耻<span class="tag">&lt;<span class="name">em</span>&gt;</span>但<span class="tag">&lt;/<span class="name">em</span>&gt;</span>有用</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">i</span>&gt;</span>我就是斜体表示一下<span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line"></div><div class="line">删除很<span class="tag">&lt;<span class="name">strong</span>&gt;</span>危险<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>我就是粗体表示一下<span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line"></div><div class="line">搜索结果<span class="tag">&lt;<span class="name">mark</span>&gt;</span>高亮<span class="tag">&lt;/<span class="name">mark</span>&gt;</span>了</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="P6-网站优化"><a href="#P6-网站优化" class="headerlink" title="P6 网站优化"></a>P6 网站优化</h2><h3 id="关键渲染路径"><a href="#关键渲染路径" class="headerlink" title="关键渲染路径"></a>关键渲染路径</h3><h4 id="将-HTML-转化为-DOM"><a href="#将-HTML-转化为-DOM" class="headerlink" title="将 HTML 转化为 DOM"></a>将 HTML 转化为 DOM</h4><p>主要流程是 Characters -&gt; Tokens -&gt; Nodes -&gt; Dom</p>
-<p>即解析 HTML 的字符，遇到 &lt;&gt; 标签就把它转化为一个令牌（注意令牌有起始、结束令牌之分，以此浏览器可以确定层级关系），另一个进程同时会消耗令牌（同步可以加快渲染速度吧）生成节点对象。当所有令牌消耗完，则 DOM 树也生成完毕</p>
-<p>DOM 树表示了 HTML 的内容和属性，以及各节点间的关系。此时每个节点对象包含了 html 上定义的属性，如 img 节点对象包含了 html 上 img 的 src 属性</p>
-
-          
+          <p>简介：Udacity 前端学习总结<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/13/udacity/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
