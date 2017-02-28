@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="前端," />
 
 
 
@@ -84,16 +84,34 @@
 
 
 
-<meta name="description" content="简介：发现定义 Object.defineProperty 的 getter 方法可以做很有意思的事，适合做浏览器的兼容性检测，特此记录一下">
+<meta name="description" content="如何实现一个LazyMan （微信实习面试题）
+知识点
+使用 setTimeout(this.next, 0)来省略一般 LazyMan 的 value() 方法，控制函数的开始执行
+
+把闭包函数推入 this.tasks 省略对参数的储存（仔细想想，闭包就是用来存参的）
+
+使用 this.tasks 来维护执行顺序：sleepFirst 直接 unshift 先执行，其他用 push 按顺序执行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="属性访问检测">
-<meta property="og:url" content="http://yoursite.com/2017/01/08/snooper/index.html">
+<meta property="og:title" content="LazyMan 知识总结">
+<meta property="og:url" content="http://yoursite.com/2017/02/13/lazy-man/index.html">
 <meta property="og:site_name" content="Joe">
-<meta property="og:description" content="简介：发现定义 Object.defineProperty 的 getter 方法可以做很有意思的事，适合做浏览器的兼容性检测，特此记录一下">
-<meta property="og:updated_time" content="2017-01-15T07:56:15.000Z">
+<meta property="og:description" content="如何实现一个LazyMan （微信实习面试题）
+知识点
+使用 setTimeout(this.next, 0)来省略一般 LazyMan 的 value() 方法，控制函数的开始执行
+
+把闭包函数推入 this.tasks 省略对参数的储存（仔细想想，闭包就是用来存参的）
+
+使用 this.tasks 来维护执行顺序：sleepFirst 直接 unshift 先执行，其他用 push 按顺序执行">
+<meta property="og:updated_time" content="2017-02-28T10:44:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="属性访问检测">
-<meta name="twitter:description" content="简介：发现定义 Object.defineProperty 的 getter 方法可以做很有意思的事，适合做浏览器的兼容性检测，特此记录一下">
+<meta name="twitter:title" content="LazyMan 知识总结">
+<meta name="twitter:description" content="如何实现一个LazyMan （微信实习面试题）
+知识点
+使用 setTimeout(this.next, 0)来省略一般 LazyMan 的 value() 方法，控制函数的开始执行
+
+把闭包函数推入 this.tasks 省略对参数的储存（仔细想想，闭包就是用来存参的）
+
+使用 this.tasks 来维护执行顺序：sleepFirst 直接 unshift 先执行，其他用 push 按顺序执行">
 
 
 
@@ -121,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/08/snooper/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/13/lazy-man/"/>
 
 
 
 
 
-  <title> 属性访问检测 | Joe </title>
+  <title> LazyMan 知识总结 | Joe </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +291,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/08/snooper/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/13/lazy-man/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Joe">
@@ -297,7 +315,7 @@
             
             
               
-                属性访问检测
+                LazyMan 知识总结
               
             
           </h1>
@@ -312,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-08T10:31:12+08:00">
-                2017-01-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-13T17:50:47+08:00">
+                2017-02-13
               </time>
             
 
@@ -323,28 +341,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/专业技能/" itemprop="url" rel="index">
-                    <span itemprop="name">专业技能</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -353,8 +349,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/08/snooper/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/08/snooper/" itemprop="commentCount"></span>
+                <a href="/2017/02/13/lazy-man/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/13/lazy-man/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -364,7 +360,7 @@
 
           
           
-             <span id="/2017/01/08/snooper/" class="leancloud_visitors" data-flag-title="属性访问检测">
+             <span id="/2017/02/13/lazy-man/" class="leancloud_visitors" data-flag-title="LazyMan 知识总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -391,19 +387,17 @@
       
 
       
-        <p>简介：发现定义 Object.defineProperty 的 getter 方法可以做很有意思的事，适合做浏览器的兼容性检测，特此记录一下<br><a id="more"></a></p>
-<p>事情是这样的，为了优化浏览器的滚动体验， addEventListener 的第三个参数可以传一个包含 passive 属性的对象，表明该事件是 passive 的（具体可以看<a href="https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md" target="_blank" rel="external">Passive Event Listener</a>）。但是为了兼容旧版本的浏览器，就需要探测浏览器浏览器是否接受一个包含 passive 属性的对象。那么怎么探测呢？具体代码如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Test via a getter in the options object to see if the passive property is accessed</span></div><div class="line"><span class="keyword">var</span> supportsPassive = <span class="literal">false</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  <span class="keyword">var</span> opts = <span class="built_in">Object</span>.defineProperty(&#123;&#125;, <span class="string">'passive'</span>, &#123;</div><div class="line">    <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      supportsPassive = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">"test"</span>, <span class="literal">null</span>, opts);</div><div class="line">&#125; <span class="keyword">catch</span> (e) &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// Use our detect's results. passive applied if supported, capture will be false either way.</span></div><div class="line">elem.addEventListener(<span class="string">'touchstart'</span>, fn, supportsPassive ? &#123; <span class="attr">passive</span>: <span class="literal">true</span> &#125; : <span class="literal">false</span>);</div></pre></td></tr></table></figure></p>
-<p>自定义对象的属性和 getter 方法，如果被检测的函数使用了该属性，那么必定会调用 getter 方法，这样就能判断浏览器是是支持该特性的，真是巧妙到没有朋友啊！</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>使用场景：检测是否访问过对象的某属性</li>
-<li>使用方法：通过 Object.defineProperty 自定义 getter 方法来检测</li>
-<li>原理：如果访问该属性，则会调用 getter 方法</li>
-</ul>
-<h2 id="自测题目"><a href="#自测题目" class="headerlink" title="自测题目"></a>自测题目</h2><ul>
-<li>检测函数 say 是否支持接受 name 属性和 test 属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params">person</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;person.name&#125;</span> is <span class="subst">$&#123;person.age&#125;</span> old`</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><a href="http://web.jobbole.com/89626/" target="_blank" rel="external">如何实现一个LazyMan （微信实习面试题）</a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li><p>使用 <code>setTimeout(this.next, 0)</code>来省略一般 LazyMan 的 <code>value()</code> 方法，控制函数的开始执行</p>
+</li>
+<li><p>把闭包函数推入 <code>this.tasks</code> 省略对参数的储存（仔细想想，闭包就是用来存参的）</p>
+</li>
+<li><p>使用 <code>this.tasks</code> 来维护执行顺序：sleepFirst 直接 unshift 先执行，其他用 push 按顺序执行</p>
+</li>
+<li><p>解析器在全局或者函数内部解析到 function 时，默认认为是函数声明。使用 <code>=</code> 或 <code>()</code> 让解析器以函数表示解析函数</p>
 </li>
 </ul>
-<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">say</span>(<span class="params">person</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;person.name&#125;</span> is <span class="subst">$&#123;person.age&#125;</span> old`</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> isSupportName = <span class="literal">false</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">const</span> snooper = <span class="built_in">Object</span>.defineProperty(&#123;&#125;, <span class="string">'name'</span>, &#123;</div><div class="line">        get() &#123;</div><div class="line">            isSupportName = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    say(snooper)</div><div class="line">&#125;</div><div class="line"><span class="keyword">catch</span>(e) &#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> isSupportTest = <span class="literal">false</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">const</span> snooper = <span class="built_in">Object</span>.defineProperty(&#123;&#125;, <span class="string">'test'</span>, &#123;</div><div class="line">        get() &#123;</div><div class="line">            isSupportTest = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    say(snooper)</div><div class="line">&#125;</div><div class="line"><span class="keyword">catch</span>(e) &#123;&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -425,13 +419,19 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/02/canvas-seat/" rel="next" title="手Q演出选座页性能10倍提升的优化">
-                <i class="fa fa-chevron-left"></i> 手Q演出选座页性能10倍提升的优化
+              <a href="/2017/01/15/passive-event-listeners/" rel="next" title="高性能滚动（一）：Passive event listeners">
+                <i class="fa fa-chevron-left"></i> 高性能滚动（一）：Passive event listeners
               </a>
             
           </div>
@@ -440,8 +440,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/15/npm-module/" rel="prev" title="npm模块开发问题总结">
-                npm模块开发问题总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/13/udacity/" rel="prev" title="Udacity 前端学习总结">
+                Udacity 前端学习总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -468,8 +468,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/08/snooper/"
-           data-title="属性访问检测" data-url="http://yoursite.com/2017/01/08/snooper/">
+      <div class="ds-thread" data-thread-key="2017/02/13/lazy-man/"
+           data-title="LazyMan 知识总结" data-url="http://yoursite.com/2017/02/13/lazy-man/">
       </div>
     
   </div>
@@ -569,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自测题目"><span class="nav-number">2.</span> <span class="nav-text">自测题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#答案"><span class="nav-number">2.1.</span> <span class="nav-text">答案</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li></ol></div>
             
 
           </div>

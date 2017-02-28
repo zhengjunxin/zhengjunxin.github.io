@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[《白帽子讲 Web 安全》总结]]></title>
+      <url>%2F2017%2F02%2F28%2Fweb-security%2F</url>
+      <content type="text"><![CDATA[简介：介绍XSS（跨站脚本攻击）、CSRF (跨站请求伪造)和原理、应用和防御 XSS（跨站脚本攻击）使用场景 cookie劫持 模拟请求：删文章，发评论等 钓鱼：画出登录窗口，让用户输入密码 利用扩展程序、浏览器控件 防御方法 httpOnly 防御 XSS 对 Cookies 的劫持 CSP 防止插入来历不明的脚本 输入检查 输出检查 CSRF (跨站请求伪造)原理：模拟用户发送请求案例：引诱用户访问某页面，在该页面发送请求，删除用户的博客 防御方法 验证码：即需要用户确认操作 Referer：验证请求的源 Token：CSRF 的本质是因为请求可预测，如delete=blogId，如果请求需要带上不可预测的 token，CSRF 就没办法了，如delete=blogId&amp;token=tokenId，实现步骤后端把 token 站在 cookie 里，因为 CSRF 只是“请求”伪造，是没办法获得 cookie 的 Cookie 的分类 session cookie：浏览器关闭后失效，没有指定 expire 时生成的 cookie，存于浏览器内存 Third-party cookie：到了 expire 后失效，指定 expire 时生成的 cookie，存于本地！]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Udacity 前端学习总结]]></title>
+      <url>%2F2017%2F02%2F13%2Fudacity%2F</url>
+      <content type="text"><![CDATA[P1 HTML 学习了 &lt;em&gt; 与 &lt;i&gt; 的区别：视觉上都是斜体，但 &lt;em&gt; 表示强调， &lt;i&gt; 是从斜体，从文档中区分出来 &lt;strong&gt; 和 &lt;b&gt; 的区别：视觉上都是粗体，但 &lt;strong&gt; 表示重要，&lt;b&gt; 则是以粗体从文档中区分出来 &lt;mark&gt; 表示搜索结果高亮 用 &lt;del&gt; 表示删除的语义， &lt;strike&gt; 也可以但 HTML 5 不推荐 &lt;sup&gt; 和 &lt;sub&gt; 表示上下标 总结：123456789逃避可耻&lt;em&gt;但&lt;/em&gt;有用&lt;i&gt;我就是斜体表示一下&lt;/i&gt;删除很&lt;strong&gt;危险&lt;/strong&gt;&lt;b&gt;我就是粗体表示一下&lt;/b&gt;搜索结果&lt;mark&gt;高亮&lt;/mark&gt;了 P6 网站优化关键渲染路径将 HTML 转化为 DOM主要流程是 Characters -&gt; Tokens -&gt; Nodes -&gt; Dom 即解析 HTML 的字符，遇到 &lt;&gt; 标签就把它转化为一个令牌（注意令牌有起始、结束令牌之分，以此浏览器可以确定层级关系），另一个进程同时会消耗令牌（同步可以加快渲染速度吧）生成节点对象。当所有令牌消耗完，则 DOM 树也生成完毕 DOM 树表示了 HTML 的内容和属性，以及各节点间的关系。此时每个节点对象包含了 html 上定义的属性，如 img 节点对象包含了 html 上 img 的 src 属性]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[LazyMan 知识总结]]></title>
+      <url>%2F2017%2F02%2F13%2Flazy-man%2F</url>
+      <content type="text"><![CDATA[如何实现一个LazyMan （微信实习面试题） 知识点 使用 setTimeout(this.next, 0)来省略一般 LazyMan 的 value() 方法，控制函数的开始执行 把闭包函数推入 this.tasks 省略对参数的储存（仔细想想，闭包就是用来存参的） 使用 this.tasks 来维护执行顺序：sleepFirst 直接 unshift 先执行，其他用 push 按顺序执行 解析器在全局或者函数内部解析到 function 时，默认认为是函数声明。使用 = 或 () 让解析器以函数表示解析函数]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[高性能滚动（一）：Passive event listeners]]></title>
       <url>%2F2017%2F01%2F15%2Fpassive-event-listeners%2F</url>
       <content type="text"><![CDATA[简介：Passive event listeners 是新增的特性，指在 addEventListener 时传入{passive: true} 参数，表明不会在回调中执行 preventDefault()从而消除由 touch 和 wheel 事件带来的滚动阻塞，提高页面的滚动性能。 目录 问题原因 使用 特性检测 问题原因所有的现代浏览器都有个线程专门用于滚动，保证页面滚动的流畅。但是因为 touchstart, touchmove 和 wheel （注意不包括 scroll 事件，因为 scroll 事件是在页面已经滚动时才触发的）这 3 个事件可以通过调用 preventDefault() 阻止滚动行为。所以如果为滚动元素注册了以上的事件，则浏览器必须等待回调函数执行完毕才能滚动，这无疑影响了滚动性能。而且即使是一个 空的回调函数也会影响滚动性能。 根据Google统计 For instance, in Chrome for Android 80% of the touch events that block scrolling never actually prevent it. 10% of these events add more than 100ms of delay to the start of scrolling, and a catastrophic delay of at least 500ms occurs in 1% of scrolls. 所以 Passive event listeners 就是提供给我们一个方法，在用 addEventListener 注册 touchstart, touchmove 和 wheel 监听器时，承诺我们不会调用 preventDefault(), 让浏览器不需等待回调执行，马上开始滚动。 使用12// passive touchstart eventtarget.addEventListener(&apos;touchstart&apos;, listener, &#123;passive: true&#125;) MDN addEventListener也已经更新了该语法 特性检测由于旧版本的浏览器 addEventListener 的第三个参数是接受一个布尔值的，如果传对象进去，只会被解析为 true，所以在注册时需要检测是否支持该特性，可以通过 detect-passive-events 库检测]]></content>
