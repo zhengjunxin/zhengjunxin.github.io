@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/02/13/udacity/index.html">
 <meta property="og:site_name" content="Joe">
 <meta property="og:description" content="简介：Udacity 前端学习总结">
-<meta property="og:updated_time" content="2017-03-04T06:23:34.000Z">
+<meta property="og:updated_time" content="2017-03-05T07:55:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Udacity 前端学习总结">
 <meta name="twitter:description" content="简介：Udacity 前端学习总结">
@@ -402,11 +402,32 @@
 <li>Idle：50ms, 利用空闲时间，加载不重要的内容</li>
 <li>Load：1000ms, 首屏显示</li>
 </ul>
-<h4 id="更改样式"><a href="#更改样式" class="headerlink" title="更改样式"></a>更改样式</h4><p>渲染的 3 个步骤：layout, paint, composite 即重排，重绘，合成复合层。有 3 种场景，优化的目标就是减少参与的步骤</p>
+<h4 id="更改样式"><a href="#更改样式" class="headerlink" title="更改样式"></a>更改样式</h4><p><a href="https://developers.google.com/web/fundamentals/performance/rendering/" target="_blank" rel="external">像素管道</a>即更改样式时，要经历的 5 个区域</p>
 <ol>
-<li>重排，重绘，合成复合层</li>
-<li>重绘，合成复合层</li>
-<li>合成复合层<br><code>transform: translate(0, 0)</code> 是个 2D translate 不会产生复合层，要 <code>transform: translateZ(0)</code> 表示 3D translate 才会产生复合层</li>
+<li>JavaScript（更改样式）<ul>
+<li>使用 requestAnimationFrame</li>
+<li>使用 web worker</li>
+</ul>
+</li>
+<li>Style Calculation（样式计算），可分为两个步骤：匹配选择器、根据选择器计算样式<ul>
+<li>降低选择器复杂度 BEM</li>
+<li>减少要计算样式的元素数目</li>
+</ul>
+</li>
+<li>Layout（重排）<ul>
+<li>使用 flex 布局（比 flow 和 position 高效？！）</li>
+</ul>
+</li>
+<li>Paint（重绘）<ul>
+<li>使用复合层，减少重绘范围</li>
+<li>降低样式复杂度如 box-shadow</li>
+</ul>
+</li>
+<li>Composite（复合）<ul>
+<li>使用 transform 和 opacity 来做动画</li>
+<li>减少复合层<br><code>transform: translate(0, 0)</code> 是个 2D translate 不会产生复合层，要 <code>transform: translateZ(0)</code> 表示 3D translate 才会产生复合层</li>
+</ul>
+</li>
 </ol>
 <h4 id="强制同步布局事件"><a href="#强制同步布局事件" class="headerlink" title="强制同步布局事件"></a>强制同步布局事件</h4><p>该事件的发生是因为，样式发生了改变，浏览器不用同步更新，而是缓存起来批量更新样式。但是如果改变了样式，然后查询样式，则浏览器需要同步布局，才能返回正确的样式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 此时浏览器会强制同步布局，然后才能返回正确的 offsetHeight</span></div><div class="line">box.classList.add(<span class="string">'new-style'</span>)</div><div class="line">box.offsetHeight</div><div class="line"></div><div class="line"><span class="comment">// 正确的做法的，如果不需要查询更新后的样式，可以把查询放在前面</span></div><div class="line">box.offsetHeight</div><div class="line">box.classList.add(<span class="string">'new-style'</span>)</div></pre></td></tr></table></figure></p>
 
