@@ -62,11 +62,23 @@ CSS 阻塞 JS 执行，因为 JS 可能会更改 CSSOM，所以浏览器”智�
 * Load：1000ms, 首屏显示
 
 #### 更改样式
-渲染的 3 个步骤：layout, paint, composite 即重排，重绘，合成复合层。有 3 种场景，优化的目标就是减少参与的步骤
-1. 重排，重绘，合成复合层
-2. 重绘，合成复合层
-3. 合成复合层
+[像素管道](https://developers.google.com/web/fundamentals/performance/rendering/)即更改样式时，要经历的 5 个区域
+1. JavaScript（更改样式）
+    * 使用 requestAnimationFrame
+    * 使用 web worker
+2. Style Calculation（样式计算），可分为两个步骤：匹配选择器、根据选择器计算样式
+    * 降低选择器复杂度 BEM
+    * 减少要计算样式的元素数目
+3. Layout（重排）
+    * 使用 flex 布局（比 flow 和 position 高效？！）
+4. Paint（重绘）
+    * 使用复合层，减少重绘范围
+    * 降低样式复杂度如 box-shadow
+5. Composite（复合）
+    * 使用 transform 和 opacity 来做动画
+    * 减少复合层
 `transform: translate(0, 0)` 是个 2D translate 不会产生复合层，要 `transform: translateZ(0)` 表示 3D translate 才会产生复合层
+
 
 #### 强制同步布局事件
 该事件的发生是因为，样式发生了改变，浏览器不用同步更新，而是缓存起来批量更新样式。但是如果改变了样式，然后查询样式，则浏览器需要同步布局，才能返回正确的样式
