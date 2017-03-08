@@ -1,13 +1,13 @@
 ---
-title: event-loop
+title: 事件循环
 date: 2017-03-08 19:09:11
 tags:
 - 前端
 - 引擎相关知识
 ---
 
+简介：学习事件循环的 macrotask 和 microtask 和抛出异常后 JS 引擎的工作
 <!-- more -->
-简介：学习事件循环的 macrotask 和 microtask；学习抛出异常后 JS 引擎的工作
 
 ## 事件循环
 ```javascript
