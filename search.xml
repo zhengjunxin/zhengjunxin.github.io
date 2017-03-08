@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[event-loop]]></title>
+      <url>%2F2017%2F03%2F08%2Fevent-loop%2F</url>
+      <content type="text"><![CDATA[简介：学习事件循环的 macrotask 和 microtask；学习抛出异常后 JS 引擎的工作 事件循环12345678910111213setTimeout(function()&#123;console.log(4)&#125;,0);new Promise(function(resolve)&#123; console.log(1) for( var i=0 ; i&lt;10000 ; i++ )&#123; i==9999 &amp;&amp; resolve() &#125; console.log(2)&#125;).then(function()&#123; console.log(5)&#125;);console.log(3);// 1 2 3 5 4 浏览器只有一个事件循环（Event Loop），但可以有多个队列，每个队列的优先级不一样。浏览器先执行一个 macrotask，然后执行所有 microtask macrotask 队列：整个脚本，setTimeout microtask 队列：then 整个脚本在 macrotask setTimeout 推入 macrotask console.log(1) resolve 导致 then 推入 microtask console.log(2) console.log(3) 脚本执行完成毕，执行 microtask console.log(5) 执行下一个 macrotask console.log(4) 异常12345678910setTimeout(() =&gt; &#123; console.log(23333)&#125;, 0)throw "Error"// 结果 // Uncaught Error// 23333// 而不是 Uncaught Error 后就不响应了 异常只是从当前函数中退出，但是引擎会继续工作（以前还以为抛出异常后，引擎就不响应了呢）]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[《白帽子讲 Web 安全》总结]]></title>
       <url>%2F2017%2F02%2F28%2Fweb-security%2F</url>
       <content type="text"><![CDATA[简介：介绍XSS（跨站脚本攻击）、CSRF (跨站请求伪造)和原理、应用和防御 XSS（跨站脚本攻击）使用场景 cookie劫持 模拟请求：删文章，发评论等 钓鱼：画出登录窗口，让用户输入密码 利用扩展程序、浏览器控件 防御方法 httpOnly 防御 XSS 对 Cookies 的劫持 CSP 防止插入来历不明的脚本 输入检查 输出检查 CSRF (跨站请求伪造)原理：模拟用户发送请求案例：引诱用户访问某页面，在该页面发送请求，删除用户的博客 防御方法 验证码：即需要用户确认操作 Referer：验证请求的源 Token：CSRF 的本质是因为请求可预测，如delete=blogId，如果请求需要带上不可预测的 token，CSRF 就没办法了，如delete=blogId&amp;token=tokenId，实现步骤后端把 token 站在 cookie 里，因为 CSRF 只是“请求”伪造，是没办法获得 cookie 的 Cookie 的分类 session cookie：浏览器关闭后失效，没有指定 expire 时生成的 cookie，存于浏览器内存 Third-party cookie：到了 expire 后失效，指定 expire 时生成的 cookie，存于本地！]]></content>
