@@ -3,9 +3,16 @@
   
     
     <entry>
-      <title><![CDATA[event-loop]]></title>
+      <title><![CDATA[debounce 和 throttle 总结]]></title>
+      <url>%2F2017%2F03%2F17%2Fdebounce-and-throttle%2F</url>
+      <content type="text"><![CDATA[简介：总结 debounce 和 throttle 函数的使用场景 debounce在最后一次调用后触发。1234// 1 表示debounced-function 的调用，0表示空闲，X表示真正的执行// 在 delay = 2s 时，在最后一次调用后的 2s 后执行111100 x 联想：debounce 防抖动，秒完尿后，才抖一下 使用场景： 监听搜索关键字改变（只在最后一次输入后才是有效的） throttle每隔一定时间触发。1234// 1 表示throttled-function 的调用，0表示空闲，X表示真正的执行// 在 delay = 2 时，每隔 2s 调用一次111111 x x 联想：throttle 节流器，掐紧水管，每 delay 秒只滴一滴 使用场景： 滚动检查（此时不能用 debounce 因为他会在停下来时才触发）]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[事件循环]]></title>
       <url>%2F2017%2F03%2F08%2Fevent-loop%2F</url>
-      <content type="text"><![CDATA[简介：学习事件循环的 macrotask 和 microtask；学习抛出异常后 JS 引擎的工作 事件循环12345678910111213setTimeout(function()&#123;console.log(4)&#125;,0);new Promise(function(resolve)&#123; console.log(1) for( var i=0 ; i&lt;10000 ; i++ )&#123; i==9999 &amp;&amp; resolve() &#125; console.log(2)&#125;).then(function()&#123; console.log(5)&#125;);console.log(3);// 1 2 3 5 4 浏览器只有一个事件循环（Event Loop），但可以有多个队列，每个队列的优先级不一样。浏览器先执行一个 macrotask，然后执行所有 microtask macrotask 队列：整个脚本，setTimeout microtask 队列：then 整个脚本在 macrotask setTimeout 推入 macrotask console.log(1) resolve 导致 then 推入 microtask console.log(2) console.log(3) 脚本执行完成毕，执行 microtask console.log(5) 执行下一个 macrotask console.log(4) 异常12345678910setTimeout(() =&gt; &#123; console.log(23333)&#125;, 0)throw "Error"// 结果 // Uncaught Error// 23333// 而不是 Uncaught Error 后就不响应了 异常只是从当前函数中退出，但是引擎会继续工作（以前还以为抛出异常后，引擎就不响应了呢）]]></content>
+      <content type="text"><![CDATA[简介：学习事件循环的 macrotask 和 microtask 和抛出异常后 JS 引擎的工作 事件循环12345678910111213setTimeout(function()&#123;console.log(4)&#125;,0);new Promise(function(resolve)&#123; console.log(1) for( var i=0 ; i&lt;10000 ; i++ )&#123; i==9999 &amp;&amp; resolve() &#125; console.log(2)&#125;).then(function()&#123; console.log(5)&#125;);console.log(3);// 1 2 3 5 4 浏览器只有一个事件循环（Event Loop），但可以有多个队列，每个队列的优先级不一样。浏览器先执行一个 macrotask，然后执行所有 microtask macrotask 队列：整个脚本，setTimeout microtask 队列：then 整个脚本在 macrotask setTimeout 推入 macrotask console.log(1) resolve 导致 then 推入 microtask console.log(2) console.log(3) 脚本执行完成毕，执行 microtask console.log(5) 执行下一个 macrotask console.log(4) 异常12345678910setTimeout(() =&gt; &#123; console.log(23333)&#125;, 0)throw "Error"// 结果 // Uncaught Error// 23333// 而不是 Uncaught Error 后就不响应了 异常只是从当前函数中退出，但是引擎会继续工作（以前还以为抛出异常后，引擎就不响应了呢）]]></content>
     </entry>
 
     
