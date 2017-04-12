@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[debounce 和 throttle 总结]]></title>
       <url>%2F2017%2F03%2F17%2Fdebounce-and-throttle%2F</url>
-      <content type="text"><![CDATA[简介：总结 debounce 和 throttle 函数的使用场景 debounce在最后一次调用后触发。1234// 1 表示debounced-function 的调用，0表示空闲，X表示真正的执行// 在 delay = 2s 时，在最后一次调用后的 2s 后执行111100 x 联想：debounce 防抖动，尿完尿后，才抖一下 使用场景： 监听搜索关键字改变（只在最后一次输入后才是有效的） throttle每隔一定时间触发。1234// 1 表示throttled-function 的调用，0表示空闲，X表示真正的执行// 在 delay = 2 时，每隔 2s 调用一次111111 x x 联想：throttle 节流器，掐紧水管，每 delay 秒只滴一滴 使用场景： 滚动检查（此时不能用 debounce 因为他会在停下来时才触发）]]></content>
+      <content type="text"><![CDATA[简介：总结 debounce 和 throttle 函数的使用场景 debounce在最后一次调用后触发。12345// 1 表示debounced-function 的调用，0表示空闲，X表示真正的执行// 在 delay = 2s 时，在最后一次调用后的 2s 后执行111100&#123;% img /images/debounce_edited.jpg %&#125; x 联想：debounce 防抖动，尿完尿后，才抖一下 使用场景： 监听搜索关键字改变（只在最后一次输入后才是有效的） throttle每隔一定时间触发。1234// 1 表示throttled-function 的调用，0表示空闲，X表示真正的执行// 在 delay = 2 时，每隔 2s 调用一次111111 x x 联想：throttle 节流器，掐紧水管，每 delay 秒只滴一滴 使用场景： 滚动检查（此时不能用 debounce 因为他会在停下来时才触发）]]></content>
     </entry>
 
     
