@@ -14,7 +14,7 @@ debounce 把多个连续的函数调用汇总起来，然后在最后一次调�
 
 {% img /images/debounce.jpg %}
   
-  
+
 联想：debounce 防抖动，尿完尿之后，才抖一下，而且只抖一下
 使用场景：
 * 输入监听，最后一次输入才是有效的输入
@@ -31,3 +31,7 @@ throttle 限制函数调用，在固定时间内只会触发一次
 
 ## 总结
 debounce 是在多次函数调用，但只有一次是有效时使用。throttle 是在多次函数调用且都有效，但需要减少频率时使用。或者说只需要抖一抖时用 debounce 函数，其余的就用 throttle 函数。
+
+## 参考
+[debouncing-throttling-explained-examples](https://css-tricks.com/debouncing-throttling-explained-examples/
+)
