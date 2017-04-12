@@ -12,6 +12,7 @@ tags:
 // 1 表示debounced-function 的调用，0表示空闲，X表示真正的执行
 // 在 delay = 2s 时，在最后一次调用后的 2s 后执行
 111100
+{% img /images/debounce_edited.jpg %}
       x
 ```
 
@@ -29,6 +30,7 @@ tags:
 111111
   x  x
 ```
+{% img /images/throttle_edited.jpg %}
 
 联想：throttle 节流器，掐紧水管，每 delay 秒只滴一滴
 
