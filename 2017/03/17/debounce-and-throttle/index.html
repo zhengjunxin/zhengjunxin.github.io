@@ -92,7 +92,7 @@
 <meta property="og:description" content="简介：介绍 debounce 和 throttle 的区别和使用场景">
 <meta property="og:image" content="http://yoursite.com/images/debounce.jpg">
 <meta property="og:image" content="http://yoursite.com/images/throttle.jpg">
-<meta property="og:updated_time" content="2017-04-12T10:57:21.000Z">
+<meta property="og:updated_time" content="2017-04-12T11:00:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debounce 和 throttle 总结">
 <meta name="twitter:description" content="简介：介绍 debounce 和 throttle 的区别和使用场景">
@@ -374,17 +374,15 @@
       
         <p>简介：介绍 debounce 和 throttle 的区别和使用场景<br><a id="more"></a></p>
 <h2 id="为什么需要节流函数"><a href="#为什么需要节流函数" class="headerlink" title="为什么需要节流函数"></a>为什么需要节流函数</h2><p>某些操作(如：输入监听、滚动监听)，会在短时间内频繁调用函数，造成页面卡顿。所以这时就需要节流函数来减少函数的调用频率，优化体验。但是节流函数可以分为防抖动(debounce)，节流(throttle)两种，那什么时候用防抖动，什么时候用节流呢？</p>
-<h2 id="debounce"><a href="#debounce" class="headerlink" title="debounce"></a>debounce</h2><p>debounce 把多个连续的函数调用汇总起来，然后在最后一次调用后触发。</p>
+<h2 id="debounce-函数"><a href="#debounce-函数" class="headerlink" title="debounce 函数"></a>debounce 函数</h2><p>debounce 把多个连续的函数调用汇总起来，然后在最后一次调用后触发。</p>
 <img src="/images/debounce.jpg">
-<p>联想：debounce 防抖动，尿完尿之后，才抖一下，而且只抖一下</p>
-<p>使用场景：</p>
+<p>联想：debounce 防抖动，尿完尿之后，才抖一下，而且只抖一下<br>使用场景：</p>
 <ul>
 <li>输入监听，最后一次输入才是有效的输入</li>
 </ul>
-<h2 id="throttle"><a href="#throttle" class="headerlink" title="throttle"></a>throttle</h2><p>throttle 限制函数调用，在固定时间内只会触发一次</p>
+<h2 id="throttle-函数"><a href="#throttle-函数" class="headerlink" title="throttle 函数"></a>throttle 函数</h2><p>throttle 限制函数调用，在固定时间内只会触发一次</p>
 <img src="/images/throttle.jpg">
-<p>联想：throttle 节流器，掐紧水管，固定的时间只能滴一滴</p>
-<p>使用场景：</p>
+<p>联想：throttle 节流器，掐紧水管，固定的时间只能滴一滴<br>使用场景：</p>
 <ul>
 <li>滚动监听，此时不能用 debounce 因为他会在停下来时才触发</li>
 </ul>
@@ -556,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要节流函数"><span class="nav-number">1.</span> <span class="nav-text">为什么需要节流函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debounce"><span class="nav-number">2.</span> <span class="nav-text">debounce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throttle"><span class="nav-number">3.</span> <span class="nav-text">throttle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要节流函数"><span class="nav-number">1.</span> <span class="nav-text">为什么需要节流函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debounce-函数"><span class="nav-number">2.</span> <span class="nav-text">debounce 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throttle-函数"><span class="nav-number">3.</span> <span class="nav-text">throttle 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
