@@ -35,3 +35,4 @@ debounce 是在多次函数调用，但只有一次是有效时使用。throttle
 ## 参考
 [debouncing-throttling-explained-examples](https://css-tricks.com/debouncing-throttling-explained-examples/
 )
+[函数节流和函数去抖应用场景辨析](https://github.com/hanzichi/underscore-analysis/issues/20)
