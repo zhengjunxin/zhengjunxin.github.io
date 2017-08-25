@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/26/canvas-problems/index.html">
 <meta property="og:site_name" content="Joe">
 <meta property="og:description" content="简介：本文将会介绍在使用 canvas 过程中遇到的问题">
-<meta property="og:updated_time" content="2017-07-15T02:24:05.000Z">
+<meta property="og:updated_time" content="2017-08-25T07:44:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 绘制问题总结">
 <meta name="twitter:description" content="简介：本文将会介绍在使用 canvas 过程中遇到的问题">
@@ -394,7 +394,9 @@
 <p>结果：在小米Note 上探测是否绘制成功会闪退。详细情况是：小米支持 16000<em>16000 尺寸的 canvas，但是在 7000</em>7000 尺寸以上调用 toDataURL 就会闪退，在 8500*8500 尺寸以上调用 getImageData 就会闪退。所以该方案失败！</p>
 <h3 id="解决思路2"><a href="#解决思路2" class="headerlink" title="解决思路2"></a>解决思路2</h3><p>发现安卓对 canvas 的限制比较松，如小米Note能支持到 16000*16000 的尺寸。所以可以检测设备机型，如果是安卓则正常绘制，如果是 IOS 则根据版本进行 canvas 缩放。保证不超过该版本允许的尺寸。</p>
 <p>结果：在 IOS7 上绘制的尺寸临近但不超过 2096*2096 能成功绘制，但是会出现 canvas 中间莫名空白一块的奇异问题。所以该方案最终失败。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>IOS 上绘制大屏的 canvas 暂时只能通过绘制多个 canvas 实现</p>
+<h3 id="解决思路3"><a href="#解决思路3" class="headerlink" title="解决思路3"></a>解决思路3</h3><p>既然 IOS 不允许绘制大屏的 canvas，那么就不绘制大屏的 canvas，而是手机屏幕多大，就绘制多大的 canvas。用户手指在屏幕上移动时，重新绘制 canvas 即可！</p>
+<p>结果：即使在 IOS7 上能绘制，且因为绘制的范围小，仍有不错的性能表现。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>IOS 上绘制大屏的 canvas 可以通过绘制定屏的 canvas 实现。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.html5rocks.com/en/tutorials/canvas/hidpi/" target="_blank" rel="external">High DPI Canvas</a><br><a href="">Maximum size image on Safari page</a></p>
 
       
@@ -567,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊问题"><span class="nav-number">2.</span> <span class="nav-text">模糊问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOS上-canvas-尺寸限制问题"><span class="nav-number">3.</span> <span class="nav-text">IOS上 canvas 尺寸限制问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决思路1"><span class="nav-number">3.1.</span> <span class="nav-text">解决思路1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决思路2"><span class="nav-number">3.2.</span> <span class="nav-text">解决思路2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.3.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊问题"><span class="nav-number">2.</span> <span class="nav-text">模糊问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOS上-canvas-尺寸限制问题"><span class="nav-number">3.</span> <span class="nav-text">IOS上 canvas 尺寸限制问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决思路1"><span class="nav-number">3.1.</span> <span class="nav-text">解决思路1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决思路2"><span class="nav-number">3.2.</span> <span class="nav-text">解决思路2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决思路3"><span class="nav-number">3.3.</span> <span class="nav-text">解决思路3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.4.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
